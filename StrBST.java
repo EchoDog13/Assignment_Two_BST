@@ -46,7 +46,7 @@ public class StrBST{
         }else{
             System.out.print(" | Right: " + cRoot.right.value);
         }
-        System.out.println();
+         System.out.println();
 
 
         printR(cRoot.left);
@@ -54,23 +54,49 @@ public class StrBST{
 
     }
 
-    public boolean search(string s){
+    public boolean search(String s){
     boolean found = false;
     found = searchR(s, root);
     return found;
     }
-    public boolean searchR(string s, Node cRoot){
+    public boolean searchR(String s, Node cRoot){
         boolean found = false;
 
         if (cRoot == null){
             return false;
         } else if (s.compareTo(cRoot.value)<0) {
-        cRoot.left = insertR(s, cRoot.left);
+        found = searchR(s, cRoot.left);
     }else if (s.compareTo(cRoot.value)>0) {
-        cRoot.right = insertR(s, cRoot.right);
+        found = searchR(s, cRoot.right);
     }else if (s.compareTo(cRoot.value)==0){
         return true;
     }
-        return found;
+        return false;
 
 }
+
+
+public void remove(String s){
+removeR(s, root);
+}
+
+public Node removeR(String s, Node cRoot){
+    if (cRoot ==null) {
+        return root;
+    }
+
+    if (s.compareTo(cRoot.value)<0) {
+        cRoot.left = removeR(s,cRoot.left);
+    } else if (s.compareTo(cRoot.value)>0) {
+        cRoot.right = removeR(s, cRoot.right);
+    } else {
+        // If the node to be deleted has one or no children
+        if (cRoot.left == null) {
+            return cRoot.right;
+        } else if (cRoot.right == null) {
+            return cRoot.left;
+        }   
+        
+
+} return cRoot;
+}}
