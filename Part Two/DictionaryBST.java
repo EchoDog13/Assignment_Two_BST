@@ -1,57 +1,66 @@
-public class StrBST {
-    Node root;
+public class DictionaryBST {
+    DictionaryNode root;
 
-    public StrBST() {
+    public DictionaryBST() {
 
         root = null;
     }
 
-    public void insert(String s) {
-        root = insertR(s, root);
+    public void insert(String s, String def) {
+        root = insertR(s, root, def);
     }
 
-    public Node insertR(String s, Node cRoot) {
+    public DictionaryNode insertR(String s, DictionaryNode cRoot, String def) {
 
         if (cRoot == null) {
-            cRoot = new Node(s);
+            cRoot = new DictionaryNode(s, def);
         } else if (s.compareTo(cRoot.value) < 0) {
-            cRoot.left = insertR(s, cRoot.left);
+            cRoot.left = insertR(s, cRoot.left, def);
         } else if (s.compareTo(cRoot.value) > 0) {
-            cRoot.right = insertR(s, cRoot.right);
+            cRoot.right = insertR(s, cRoot.right, def);
         }
         return cRoot;
     }
 
-    public void print() {
+
+public void printDictonaryItem(String s){
+    DictionaryNode cRoot = root;
+    boolean found = false;
+    while (cRoot != null && found == false) {
+    
+      if (s.compareTo(cRoot.value) < 0) {
+        cRoot = cRoot.left;
+    } else if (s.compareTo(cRoot.value) > 0) {
+        cRoot = cRoot.right;
+    } else if (s.compareTo(cRoot.value) == 0) {
+        System.out.println("Word: " + cRoot.value);
+        System.out.println("Definition: " + cRoot.definition);
+        found = true;
+    }
+}
+}
+
+
+
+
+    public void printDictonary() {
         printR(root);
     }
 
-    public void printR(Node cRoot) {
+    public void printR(DictionaryNode cRoot) {
         if (cRoot == null) {
             return;
         }
+
         printR(cRoot.left);
-        System.out.print("Root: " + cRoot.value);
-
-        if (cRoot.left == null) {
-            System.out.print(" | Left: null");
-        } else {
-            System.out.print(" | Left: " + cRoot.left.value);
-
-        }
-
-        if (cRoot.right == null) {
-            System.out.print(" | Right: null");
-
-        } else {
-            System.out.print(" | Right: " + cRoot.right.value);
-        }
-        System.out.println();
-
-        
+    
+        System.out.println("Word: " + cRoot.value);
+        System.out.println("Definition: " + cRoot.definition);
+        System.out.println(); 
+    
         printR(cRoot.right);
-
-    }
+        }
+    
 
     public boolean search(String s) {
         boolean found = false;
@@ -59,7 +68,7 @@ public class StrBST {
         return found;
     }
 
-    public boolean searchR(String s, Node cRoot) {
+    public boolean searchR(String s, DictionaryNode cRoot) {
         boolean found = false;
 
         if (cRoot == null) {
@@ -79,7 +88,7 @@ public class StrBST {
         removeR(s, root);
     }
 
-    public Node removeR(String s, Node cRoot) {
+    public DictionaryNode removeR(String s, DictionaryNode cRoot) {
         String placeholder;
         if (cRoot == null) {
             return root;
@@ -102,7 +111,7 @@ public class StrBST {
         cRoot.right = removeR(cRoot.value, cRoot.right);
         return cRoot;
     }
-private String minString(Node cRoot){
+private String minString(DictionaryNode cRoot){
     String minString = cRoot.value;
     while (cRoot.left !=null) {
         minString = cRoot.left.value;

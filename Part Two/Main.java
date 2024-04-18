@@ -1,18 +1,19 @@
 public class Main{
     public static void main(String args[]){
-      StrBST alphabet = new StrBST();
-        System.out.println(alphabet.search("Dog"));
-        alphabet.insert("Carrot");
-        alphabet.insert("Apple");
-        alphabet.insert("Banana");
-        alphabet.insert("Dog");
-        alphabet.insert("Elephant");
-      //  alphabet.search("Dog");
-        alphabet.print();
-
-        alphabet.remove("Carrot");
-        System.out.println("Post Removal");
-        alphabet.print();
+      DictionaryBST dictionary = new DictionaryBST();
+      dictionary.insert("Apple", "A fruit, typically round in shape, originating from the cultivated tree Malus domestica in the rose family Rosaceae. Apples come in various colors such as red, green, or yellow, with a crisp or soft texture depending on the variety. They are commonly eaten raw but can also be used in cooking or for making beverages like cider.");
+      dictionary.insert("Dog", "A domesticated carnivorous mammal, descended from wolves and bred in a wide variety of breeds for companionship, work, or competitive activities. Dogs exhibit a diverse range of behaviors and serve various roles, including as pets, service animals, or working dogs in tasks such as herding, hunting, or search and rescue.");
+      dictionary.insert("Mountain", "A large landform that rises prominently above its surroundings, typically with steep slopes and a defined summit area. Mountains are formed through geological processes such as tectonic plate movements, volcanic activity, or erosion, and they play important roles in ecosystems, climate patterns, and human cultures.");
+      dictionary.insert("Computer", "An electronic device capable of performing various tasks by executing instructions stored in its memory. Computers consist of hardware components such as the central processing unit (CPU), memory, storage, and input/output devices, and they operate using software programs that control their functions and processes data.");
+      dictionary.insert("Book", "A written or printed work consisting of pages bound together, typically with text and/or images, intended for reading or reference. Books cover a wide range of genres, topics, and formats, including novels, non-fiction, textbooks, and e-books, and they have been a primary medium for preserving and transmitting knowledge and stories throughout history.");
+      dictionary.insert("Ocean", "A vast body of saltwater that covers a significant portion of the Earth's surface, constituting the major component of the hydrosphere. Oceans are essential for regulating the planet's climate, supporting diverse marine ecosystems, and sustaining life through processes such as evaporation, precipitation, and nutrient cycling.");
+      dictionary.insert("Sun", "The star at the center of the solar system, around which the Earth and other planets revolve. The Sun is a nearly perfect sphere of hot plasma, primarily composed of hydrogen and helium, and it provides the light and heat necessary for life on Earth. Its energy is generated through nuclear fusion reactions in its core.");
+      dictionary.insert("Chair", "A piece of furniture designed for sitting, typically having four legs and a back. Chairs come in various styles, materials, and sizes, and they are commonly used in homes, offices, schools, and public spaces for seating individuals or groups.");
+      dictionary.insert("Rain", "Precipitation in the form of liquid water droplets that fall from the atmosphere. Rain is a crucial part of the Earth's water cycle, replenishing freshwater sources and sustaining plant and animal life. It occurs as a result of condensation of atmospheric water vapor, followed by gravitational pull causing the droplets to fall.");
+      dictionary.insert("Bicycle", "A human-powered vehicle with two wheels attached to a frame, one behind the other. Bicycles are a popular mode of transportation, recreation, and exercise worldwide, offering a cost-effective and environmentally friendly way to travel short to medium distances. They come in various types, including road bikes, mountain bikes, and hybrid bikes.");
+      
+      dictionary.printDictonaryItem("Dog");
+      dictionary.printDictonary();
 
     }
 }
