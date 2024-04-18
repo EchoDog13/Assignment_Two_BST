@@ -2,7 +2,6 @@ public class DictionaryBST {
     DictionaryNode root;
 
     public DictionaryBST() {
-
         root = null;
     }
 
@@ -22,26 +21,22 @@ public class DictionaryBST {
         return cRoot;
     }
 
+    public void printDictonaryItem(String s) {
+        DictionaryNode cRoot = root;
+        boolean found = false;
+        while (cRoot != null && found == false) {
 
-public void printDictonaryItem(String s){
-    DictionaryNode cRoot = root;
-    boolean found = false;
-    while (cRoot != null && found == false) {
-    
-      if (s.compareTo(cRoot.value) < 0) {
-        cRoot = cRoot.left;
-    } else if (s.compareTo(cRoot.value) > 0) {
-        cRoot = cRoot.right;
-    } else if (s.compareTo(cRoot.value) == 0) {
-        System.out.println("Word: " + cRoot.value);
-        System.out.println("Definition: " + cRoot.definition);
-        found = true;
+            if (s.compareTo(cRoot.value) < 0) {
+                cRoot = cRoot.left;
+            } else if (s.compareTo(cRoot.value) > 0) {
+                cRoot = cRoot.right;
+            } else if (s.compareTo(cRoot.value) == 0) {
+                System.out.println("Word: " + cRoot.value);
+                System.out.println("Definition: " + cRoot.definition);
+                found = true;
+            }
+        }
     }
-}
-}
-
-
-
 
     public void printDictonary() {
         printR(root);
@@ -53,14 +48,13 @@ public void printDictonaryItem(String s){
         }
 
         printR(cRoot.left);
-    
+
         System.out.println("Word: " + cRoot.value);
         System.out.println("Definition: " + cRoot.definition);
-        System.out.println(); 
-    
+        System.out.println();
+
         printR(cRoot.right);
-        }
-    
+    }
 
     public boolean search(String s) {
         boolean found = false;
@@ -69,18 +63,16 @@ public void printDictonaryItem(String s){
     }
 
     public boolean searchR(String s, DictionaryNode cRoot) {
-        boolean found = false;
 
         if (cRoot == null) {
             return false;
         } else if (s.compareTo(cRoot.value) < 0) {
-            found = searchR(s, cRoot.left);
+            return searchR(s, cRoot.left);
         } else if (s.compareTo(cRoot.value) > 0) {
-            found = searchR(s, cRoot.right);
-        } else if (s.compareTo(cRoot.value) == 0) {
+            return searchR(s, cRoot.right);
+        } else {
             return true;
         }
-        return false;
 
     }
 
@@ -89,7 +81,6 @@ public void printDictonaryItem(String s){
     }
 
     public DictionaryNode removeR(String s, DictionaryNode cRoot) {
-        String placeholder;
         if (cRoot == null) {
             return root;
         }
@@ -105,18 +96,19 @@ public void printDictonaryItem(String s){
             } else if (cRoot.right == null) {
                 return cRoot.left;
             }
-
+            cRoot.value = minString(cRoot.right);
+            cRoot.right = removeR(cRoot.value, cRoot.right);
         }
-        cRoot.value = minString(cRoot.right);
-        cRoot.right = removeR(cRoot.value, cRoot.right);
+
         return cRoot;
     }
-private String minString(DictionaryNode cRoot){
-    String minString = cRoot.value;
-    while (cRoot.left !=null) {
-        minString = cRoot.left.value;
-        cRoot = cRoot.left;
+
+    private String minString(DictionaryNode cRoot) {
+        String minString = cRoot.value;
+        while (cRoot.left != null) {
+            minString = cRoot.left.value;
+            cRoot = cRoot.left;
+        }
+        return minString;
     }
-    return minString;
-}
 }
