@@ -185,6 +185,7 @@ public class DictionaryLookup {
                 String value = getValue();
                 //calls method to remove a value and its definition from the dictionary BST
                 dictionary.remove(value);
+                System.out.println("The value " + value + " and its defintion have been removed");
                 return true;
 
             } else if (excecutionTask == 5) {
