@@ -159,24 +159,25 @@ public class DictionaryBST {
         if (cRoot == null) {
             return root;
         }
-
+        //If less than alphpabetically, call left
         if (s.compareTo(cRoot.value) < 0) {
             cRoot.left = removeR(s, cRoot.left);
-        } else if (s.compareTo(cRoot.value) > 0) {
+        } //If greater than alphabetically, call right
+        else if (s.compareTo(cRoot.value) > 0) {
             cRoot.right = removeR(s, cRoot.right);
-        } else {
+        } //Must be equal to current node
+        else{
             // If the node to be deleted has one or no children, return child
             if (cRoot.left == null) {
                 return cRoot.right;
             } else if (cRoot.right == null) {
                 return cRoot.left;
-            }
+            }else{
             //calls to find the left most node of the right sub tree
             cRoot.value = minString(cRoot.right);
             cRoot.right = removeR(cRoot.value, cRoot.right);
-            
+            }
     }
-
         return cRoot;
     }
 /**
