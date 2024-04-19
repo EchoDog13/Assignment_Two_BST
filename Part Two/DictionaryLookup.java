@@ -21,7 +21,6 @@ public class DictionaryLookup {
 
     /**
      * Main method of dictonary command line interface
-     * 
      * @param args
      */
     public static void main(String[] args) {
@@ -29,9 +28,7 @@ public class DictionaryLookup {
         DictionaryBST dictionary = new DictionaryBST();
 
         readFile(dictionary, fileName);
-
         userInput(dictionary);
-
     }
 
     /**
@@ -54,19 +51,14 @@ public class DictionaryLookup {
             // Continue to end of file
             while (fileScanner.hasNextLine()) {
                 String data = fileScanner.nextLine().trim();
-
                 // Skip blank lines
                 if (data.trim().isEmpty()) {
                     continue;
                 }
-
                 // Split line into word and definition
                 String delimitString[] = data.split(":");
                 dictionary.insert(delimitString[0], delimitString[1]);
             }
-
-            // close file reader
-          //  fileScanner.close();
 
             System.out.println();
             System.out.println("Dictionary succesfully imported");
@@ -129,9 +121,7 @@ public class DictionaryLookup {
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a number from 1 to 6.");
             }
-
         }
-       // inputScan.close();
     }
 
     /**
@@ -142,15 +132,13 @@ public class DictionaryLookup {
      *         command to be executed
      */
     public static boolean runCommand(int excecutionTask, DictionaryBST dictionary) {
-
         try {
             if (excecutionTask == 1) {
                 System.out.println("Searching the dictionary ...");
                 // calls to get the 'value' to search for
                 String value = getValue();
 
-                System.out
-                        .println("The word/phrase " + value + " exists in the dictionary: " + dictionary.search(value));
+                System.out.println("The word/phrase " + value + " exists in the dictionary: " + dictionary.search(value));
                 return true;
 
             } else if (excecutionTask == 2) {
@@ -204,7 +192,6 @@ public class DictionaryLookup {
 
                 return true;
             }
-
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return true;
