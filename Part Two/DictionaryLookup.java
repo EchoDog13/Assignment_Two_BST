@@ -66,7 +66,7 @@ public class DictionaryLookup {
             }
 
             // close file reader
-            fileScanner.close();
+          //  fileScanner.close();
 
             System.out.println();
             System.out.println("Dictionary succesfully imported");
@@ -110,6 +110,7 @@ public class DictionaryLookup {
         // continue to allow user input while true
         while (continueOperation == true) {
             System.out.println();
+            
             System.out.println("Press any key to continue...");
 
             inputScan.nextLine();
@@ -130,7 +131,7 @@ public class DictionaryLookup {
             }
 
         }
-        inputScan.close();
+       // inputScan.close();
     }
 
     /**
@@ -176,7 +177,7 @@ public class DictionaryLookup {
                 //calls insert method on dictionary
                 dictionary.insert(value, definition);
                 System.out.println("The dictionary now contains " + value + " and its definition");
-                inputDefinition.close();
+                //inputDefinition.close();
                 return true;
 
             } else if (excecutionTask == 4) {
@@ -221,7 +222,7 @@ public class DictionaryLookup {
         Scanner inputScan = new Scanner(System.in);
         //reads string inputted by users and stores in word to be returned
         word = inputScan.nextLine();
-        inputScan.close();
+       
         return word;
     }
 }
